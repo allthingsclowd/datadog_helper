@@ -36,7 +36,7 @@ func getMetrics() []DDMetric {
 
     var c []DDMetric
     json.Unmarshal(raw, &c)
-    fmt.Println(c)
+    //fmt.Println(c)
     return c
 }
 
@@ -53,9 +53,14 @@ func main() {
     
     // read metrics in from json file
     metrics := getMetrics()
+
+    // if there's multiple parameters or metrics
     for _, m := range metrics {
-        fmt.Println(m.toString())
+        fmt.Println(m.BackendCount)
     }
+
+    // grab the first metric
+    fmt.Println(metrics[0].BackendCount)
 
     fmt.Println(toJSON(metrics))
 
