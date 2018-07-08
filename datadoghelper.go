@@ -45,7 +45,8 @@ func getMetrics(filename string) []DDMetric {
 // to the local datadog agent
 func UpdateDataDogGuagefromFile(myNameSpace string, myGuage string, myFile string) bool {
 	// get a pointer to the datadog agent
-	ddClient, err := statsd.New("127.0.0.1:8125")
+    ddClient, err := statsd.New("127.0.0.1:8125")
+    defer ddClient.Close()
     if err != nil {
 		fmt.Printf("Failed to contact DataDog Agent: %v. Check the DataDog agent is installed and running \n", err)
 		return false
@@ -76,7 +77,8 @@ func UpdateDataDogGuagefromFile(myNameSpace string, myGuage string, myFile strin
 // to the local datadog agent
 func UpdateDataDogGuagefromValue(myNameSpace string, myGuage string, myValue float64) bool {
 	// get a pointer to the datadog agent
-	ddClient, err := statsd.New("127.0.0.1:8125")
+    ddClient, err := statsd.New("127.0.0.1:8125")
+    defer ddClient.Close()
     if err != nil {
 		fmt.Printf("Failed to contact DataDog Agent: %v. Check the DataDog agent is installed and running \n", err)
 		return false
@@ -101,7 +103,8 @@ func UpdateDataDogGuagefromValue(myNameSpace string, myGuage string, myValue flo
 // to the local datadog agent
 func IncrementDataDogCounter(myNameSpace string, myCounter string) bool {
 	// get a pointer to the datadog agent
-	ddClient, err := statsd.New("127.0.0.1:8125")
+    ddClient, err := statsd.New("127.0.0.1:8125")
+    defer ddClient.Close()
     if err != nil {
 		fmt.Printf("Failed to contact DataDog Agent: %v. Check the DataDog agent is installed and running \n", err)
 		return false
