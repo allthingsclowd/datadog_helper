@@ -1,4 +1,4 @@
-package datadog
+package datadoghelper
 
 import (
 	"github.com/DataDog/datadog-go/statsd"
@@ -10,7 +10,7 @@ import (
 
 // DDMetric holds the value for datadog
 type DDMetric struct {
-    backendCount int `json:"backendCount"`
+    BackendCount int `json:"backendCount"`
 }
 
 func (m DDMetric) toString() string {
